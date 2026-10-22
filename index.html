@@ -6,7 +6,7 @@
 <title>Showroom Growth | Meta Ads + CRM for Clothing Stores | Process IQ Automation</title>
 <meta name="description" content="Performance marketing, Meta Ads and full CRM setup for Indian clothing showrooms: every enquiry gets a welcome SMS, WhatsApp and email in seconds, then a journey that brings them into your store.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#FBF6EF;--surface:#fff;--ink:#2A1418;--ink2:#4A2A30;--muted:#7A6266;--line:#EEDFD3;--line2:#F5ECE3;--wine:#7A1F35;--wine-d:#4E1222;--wine-dd:#2E0B15;--gold:#C8963E;--gold-l:#E9C987;--gold-soft:#F8EDD9;--rose:#F6E3E0;--wa:#25D366;--wa-d:#128C7E;--wa-bg:#E7DDD3;--good:#2E8B57;--good-bg:#E5F4EC;--display:"Cormorant Garamond",Georgia,serif;--body:"Manrope",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -35,7 +35,18 @@ section{padding:96px 0}
 .nav nav a{color:#E8D5D8;text-decoration:none;font-size:14px;font-weight:600}
 .nav nav a:hover{color:var(--gold-l)}
 .nav .btn{padding:10px 18px;font-size:14px}
-@media (max-width:980px){.nav nav{display:none}.nav .btn{margin-left:auto}}
+.lang{display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(233,201,135,.3)}
+.lang button{border:0;background:none;color:#E8D5D8;font:700 12.5px var(--body);padding:6px 11px;border-radius:999px;cursor:pointer;transition:all .25s}
+.lang button[lang=hi]{font-family:"Noto Sans Devanagari",var(--body)}
+.lang button[aria-pressed=true]{background:var(--gold-l);color:var(--wine-dd)}
+html[lang=hi]{--mono:"Noto Sans Devanagari",ui-monospace,monospace}
+html[lang=hi] body{font-family:"Noto Sans Devanagari",var(--body)}
+html[lang=hi] h1,html[lang=hi] h2,html[lang=hi] h3,html[lang=hi] .hstats b,html[lang=hi] .kc b,html[lang=hi] .sea h4,html[lang=hi] .mail .hi div{font-family:"Tiro Devanagari Hindi",var(--display);line-height:1.3;letter-spacing:0}
+html[lang=hi] .hero h1{font-size:clamp(40px,5.2vw,66px)}
+html[lang=hi] h2{font-size:clamp(30px,4vw,46px)}
+html[lang=hi] .kicker,html[lang=hi] .how small,html[lang=hi] .next li b,html[lang=hi] .jr li b,html[lang=hi] .pc small,html[lang=hi] .card h4{letter-spacing:.02em}
+@media (max-width:980px){.nav nav{display:none}.lang{margin-left:auto}.nav .btn{margin-left:0}}
+@media (max-width:420px){.nav .btn{padding:9px 12px;font-size:12.5px}.logo small{display:none}.lang button{padding:5px 8px}}
 /* hero */
 .hero{position:relative;background:radial-gradient(1000px 600px at 85% 10%,rgba(200,150,62,.22),transparent 60%),radial-gradient(800px 500px at 0% 100%,rgba(122,31,53,.6),transparent 60%),var(--wine-dd);color:#fff;padding:70px 0 90px;overflow:hidden}
 .hero::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 4l4 10 10 4-10 4-4 10-4-10-10-4 10-4z' fill='%23E9C987' opacity='.06'/%3E%3C/svg%3E");pointer-events:none}
@@ -340,6 +351,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <header class="nav"><div class="wrap">
   <a class="logo" href="#top"><i>IQ</i><span><b>PROCESS IQ</b><small>AUTOMATION</small></span></a>
   <nav aria-label="Sections"><a href="#how">How it works</a><a href="#demo">Live demo</a><a href="#ads">Meta ad examples</a><a href="#journey">Customer journey</a><a href="#services">Services</a><a href="#results">Results</a></nav>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="hi" aria-pressed="false" lang="hi">हिंदी</button></div>
   <a class="btn btn-g" href="https://processiqautomation.com/contact" target="_blank" rel="noopener">Free growth audit</a>
 </div></header>
 
@@ -592,15 +604,264 @@ io($("jr"),()=>$("jr").classList.add("vis"),.25);
 io($("funnel"),()=>$("funnel").querySelectorAll("i").forEach(i=>i.style.width=i.dataset.w+"%"));
 document.querySelectorAll(".kc b[data-n]").forEach(b=>io(b,()=>{const n=+b.dataset.n,p=b.dataset.p||"",s=b.dataset.s||"",pre=b.dataset.pre||"",t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/1200),v=Math.round(n*(1-Math.pow(1-k,3)));b.innerHTML=pre+p+v+s;if(k<1)requestAnimationFrame(f);};requestAnimationFrame(f);},.6));
 
+const HI={
+"How it works":"यह कैसे काम करता है",
+"Live demo":"लाइव डेमो",
+"Meta ad examples":"Meta ad के उदाहरण",
+"Customer journey":"ग्राहक की यात्रा",
+"Services":"सेवाएँ",
+"Results":"नतीजे",
+"Free growth audit":"फ़्री ग्रोथ ऑडिट",
+"For clothing & ethnic-wear showrooms":"कपड़ों और एथनिक-वियर शोरूम के लिए",
+"Turn Instagram scrollers into":"Instagram देखने वालों को",
+"showroom walk‑ins.":"अपने शोरूम तक लाइए।",
+"Meta ads that bring real enquiries, and a CRM that greets every customer on SMS, WhatsApp and email within seconds, then keeps them coming back for every wedding, festival and season.":"ऐसे Meta ads जो असली पूछताछ लाएँ, और ऐसा CRM जो हर ग्राहक का कुछ ही सेकंड में SMS, WhatsApp और ईमेल पर स्वागत करे, फिर हर शादी, त्योहार और सीज़न में उन्हें वापस बुलाता रहे।",
+"See it work live →":"लाइव देखें →",
+"View Meta ad examples":"Meta ad के उदाहरण देखें",
+"Bridal & lehenga":"ब्राइडल और लहंगा",
+"Sherwani & groom":"शेरवानी और दूल्हा",
+"Sarees":"साड़ियाँ",
+"Menswear":"मेन्सवियर",
+"Kids & family":"बच्चे और परिवार",
+"< 10 s":"< 10 सेकंड",
+"Welcome on 3 channels":"3 चैनलों पर स्वागत",
+"More walk-ins from ads*":"ads से ज़्यादा स्टोर विज़िट*",
+"Days of automatic follow-up":"दिन अपने-आप फ़ॉलो-अप",
+"Meta lead · Instagram":"Meta लीड · Instagram",
+"Bridal lehenga · Jaipur":"ब्राइडल लहंगा · जयपुर",
+"WhatsApp sent · 4 s":"WhatsApp भेजा · 4 सेकंड",
+"“Namaste Priya, your lookbook”":"“नमस्ते प्रिया, आपकी लुकबुक”",
+"Trial booked":"ट्रायल बुक हुआ",
+"Sat · 5:00 PM · Stylist Meera":"शनि · शाम 5 बजे · स्टाइलिस्ट मीरा",
+"In-store purchase":"स्टोर में ख़रीदारी",
+"₹48,500 · from Instagram ad":"₹48,500 · Instagram ad से",
+"Email":"ईमेल",
+"Store visits":"स्टोर विज़िट",
+"From one ad to a customer for life.":"एक ad से, ज़िंदगी भर का ग्राहक।",
+"Most showrooms run ads, collect numbers in a notebook or an inbox, and lose half of them. This system answers every enquiry instantly and follows up until they walk in, and again after they buy.":"ज़्यादातर शोरूम ads चलाते हैं, नंबर किसी डायरी या इनबॉक्स में लिखते हैं, और आधे ग्राहक खो देते हैं। यह सिस्टम हर पूछताछ का तुरंत जवाब देता है, स्टोर आने तक फ़ॉलो-अप करता है, और ख़रीदारी के बाद भी।",
+"01 · ATTRACT":"01 · आकर्षित करें",
+"Meta ads":"Meta ads",
+"Reels, carousels and lead forms aimed at brides, grooms and families near your store.":"आपके स्टोर के पास की दुल्हनों, दूल्हों और परिवारों के लिए Reels, carousel और lead form।",
+"02 · CAPTURE":"02 · नंबर पाएँ",
+"Number saved":"नंबर सेव",
+"Every form, WhatsApp chat and call lands in one CRM, with no duplicates.":"हर फ़ॉर्म, WhatsApp चैट और कॉल एक ही CRM में, बिना डुप्लिकेट के।",
+"03 · WELCOME":"03 · स्वागत",
+"3 channels":"3 चैनल",
+"SMS, WhatsApp and email go out in seconds with their name and interest.":"नाम और पसंद के साथ, कुछ ही सेकंड में SMS, WhatsApp और ईमेल।",
+"04 · CONVERT":"04 · ग्राहक बनाएँ",
+"Store visit":"स्टोर विज़िट",
+"Trial bookings, reminders and a stylist assigned before they arrive.":"ट्रायल बुकिंग, रिमाइंडर, और आने से पहले स्टाइलिस्ट तय।",
+"05 · RETAIN":"05 · दोबारा बुलाएँ",
+"Repeat buys":"दोबारा ख़रीदारी",
+"Festive, birthday and anniversary offers that bring them back every season.":"त्योहार, जन्मदिन और सालगिरह के ऑफ़र जो हर सीज़न उन्हें वापस लाएँ।",
+"Live demo · try it":"लाइव डेमो · ख़ुद आज़माएँ",
+"Leave a number. Watch what your customer receives.":"नंबर डालिए। देखिए आपके ग्राहक को क्या मिलता है।",
+"This is the exact flow I set up for a showroom. Fill in the form the way a customer would after tapping an Instagram ad, and see the SMS, WhatsApp and email arrive. Nothing is actually sent.":"यही वह flow है जो मैं शोरूम के लिए सेट करता हूँ। Instagram ad पर टैप करने के बाद ग्राहक की तरह फ़ॉर्म भरिए, और SMS, WhatsApp और ईमेल आते हुए देखिए। असल में कुछ भी नहीं भेजा जाता।",
+"Try it yourself":"ख़ुद आज़माएँ",
+"Instagram lead form · Sponsored":"Instagram lead form · प्रायोजित",
+"Your name":"आपका नाम",
+"WhatsApp number":"WhatsApp नंबर",
+"Looking for":"क्या चाहिए",
+"Bridal lehenga":"ब्राइडल लहंगा",
+"Wedding sherwani":"शादी की शेरवानी",
+"Silk saree":"सिल्क साड़ी",
+"Party & festive wear":"पार्टी और त्योहार के कपड़े",
+"Men's casual":"मेन्स कैज़ुअल",
+"Occasion in":"मौक़ा कब है",
+"This month":"इसी महीने",
+"1–3 months":"1–3 महीने में",
+"3–6 months":"3–6 महीने में",
+"Just browsing":"बस देख रहे हैं",
+"I agree to receive offers on WhatsApp, SMS and email.":"मैं WhatsApp, SMS और ईमेल पर ऑफ़र पाने के लिए सहमत हूँ।",
+"Get my welcome offer →":"मेरा वेलकम ऑफ़र पाएँ →",
+"Demo only. No message is sent and nothing is stored.":"सिर्फ़ डेमो। कोई मैसेज नहीं भेजा जाता और कुछ भी सेव नहीं होता।",
+"◉ CRM · New customer":"◉ CRM · नया ग्राहक",
+"Created automatically the moment the form is submitted.":"फ़ॉर्म भरते ही अपने-आप बनता है।",
+"Waiting":"इंतज़ार",
+"Source":"स्रोत",
+"Instagram · Bridal ad":"Instagram · ब्राइडल ad",
+"Interest":"पसंद",
+"Store":"स्टोर",
+"MI Road, Jaipur":"MI रोड, जयपुर",
+"Stylist assigned":"स्टाइलिस्ट",
+"Meera":"मीरा",
+"Lead score":"लीड स्कोर",
+"92 · Hot":"92 · हॉट",
+"Journey: Welcome series · waiting for a lead":"जर्नी: वेलकम सीरीज़ · लीड का इंतज़ार",
+"from form submit to all three messages delivered":"फ़ॉर्म भरने से तीनों मैसेज पहुँचने तक",
+"DLT-registered SMS":"DLT-रजिस्टर्ड SMS",
+"SMS arrives here":"SMS यहाँ आएगा",
+"WhatsApp arrives here":"WhatsApp यहाँ आएगा",
+"Inbox":"इनबॉक्स",
+"Welcome email":"वेलकम ईमेल",
+"Email arrives here":"ईमेल यहाँ आएगा",
+"✦ What happens next, automatically":"✦ आगे क्या होता है, अपने-आप",
+"DAY 1":"दिन 1",
+"WhatsApp lookbook of 6 new pieces in her interest":"उनकी पसंद के 6 नए पीस की WhatsApp लुकबुक",
+"DAY 3":"दिन 3",
+"SMS reminder to book a private trial":"प्राइवेट ट्रायल बुक करने का SMS रिमाइंडर",
+"VISIT":"विज़िट",
+"Stylist logs size, colours and budget in the CRM":"स्टाइलिस्ट CRM में साइज़, रंग और बजट दर्ज करती है",
+"PURCHASE":"ख़रीदारी",
+"Thank-you on WhatsApp + Google review link":"WhatsApp पर धन्यवाद + Google review लिंक",
+"+30 DAYS":"+30 दिन",
+"Alteration, care tips and matching accessories":"ऑल्टरेशन, देखभाल के टिप्स और मैचिंग एक्सेसरीज़",
+"FESTIVE":"त्योहार",
+"Diwali early-access preview before everyone else":"सबसे पहले दिवाली कलेक्शन की झलक",
+"Five showrooms. Five ways Meta ads fill the store.":"पाँच शोरूम। Meta ads से स्टोर भरने के पाँच तरीक़े।",
+"Sample campaigns for fictional showrooms, showing the ad format, the audience, what the customer sees when they tap, and what the CRM does next. Tap a showroom.":"काल्पनिक शोरूम के सैंपल कैंपेन: ad का फ़ॉर्मेट, ऑडियंस, टैप करने पर ग्राहक क्या देखता है, और उसके बाद CRM क्या करता है। किसी शोरूम पर टैप करें।",
+"Sponsored":"प्रायोजित",
+"Fictional showrooms and illustrative results, based on typical Indian fashion-retail campaigns. Your numbers depend on city, budget, season and offer.":"काल्पनिक शोरूम और उदाहरण के नतीजे, आम भारतीय फ़ैशन-रिटेल कैंपेन पर आधारित। आपके नतीजे शहर, बजट, सीज़न और ऑफ़र पर निर्भर करेंगे।",
+"One number. A whole year of reasons to come back.":"एक नंबर। पूरे साल वापस आने की वजहें।",
+"Once a customer is in your CRM, every message goes out on its own, on the right channel, at the right time.":"ग्राहक एक बार CRM में आ गया, तो हर मैसेज अपने-आप, सही चैनल पर, सही समय पर जाता है।",
+"0 MIN":"0 मिनट",
+"Welcome":"स्वागत",
+"Offer code and lookbook":"ऑफ़र कोड और लुकबुक",
+"New arrivals":"नया कलेक्शन",
+"Pieces matched to her interest":"उनकी पसंद के हिसाब से पीस",
+"Book a trial":"ट्रायल बुक करें",
+"One-tap slot booking":"एक टैप में स्लॉट बुकिंग",
+"In store":"स्टोर में",
+"Stylist sees full history":"स्टाइलिस्ट को पूरी हिस्ट्री दिखती है",
+"+1 DAY":"+1 दिन",
+"Thank you":"धन्यवाद",
+"Review request and care tips":"रिव्यू की गुज़ारिश और देखभाल के टिप्स",
+"Diwali & Eid":"दिवाली और ईद",
+"Early access for past buyers":"पुराने ग्राहकों को सबसे पहले",
+"BIRTHDAY":"जन्मदिन",
+"Birthday gift":"जन्मदिन का तोहफ़ा",
+"Personal offer, valid 7 days":"ख़ास ऑफ़र, 7 दिन के लिए",
+"90 DAYS":"90 दिन",
+"Win-back":"वापस बुलाएँ",
+"“We miss you” with new stock":"नए स्टॉक के साथ “हमें आपकी याद आई”",
+"Oct – Feb":"अक्टूबर – फ़रवरी",
+"Wedding season":"शादी का सीज़न",
+"Bride, groom and family journeys":"दुल्हन, दूल्हे और परिवार के लिए जर्नी",
+"Navratri · Diwali":"नवरात्रि · दिवाली",
+"Festive edit":"त्योहार कलेक्शन",
+"Early access and countdown offers":"सबसे पहले एक्सेस और काउंटडाउन ऑफ़र",
+"Nov – Jan":"नवंबर – जनवरी",
+"Winter menswear":"सर्दियों का मेन्सवियर",
+"Coats, jackets and overshirts":"कोट, जैकेट और ओवरशर्ट",
+"Apr – Jun":"अप्रैल – जून",
+"Summer & holiday":"गर्मी और छुट्टियाँ",
+"Linen, prints and travel wear":"लिनन, प्रिंट और ट्रैवल वियर",
+"What I set up":"मैं क्या सेट करता हूँ",
+"Ads, CRM and messaging, built as one system.":"Ads, CRM और मैसेजिंग, एक ही सिस्टम में।",
+"Performance marketing":"परफ़ॉर्मेंस मार्केटिंग",
+"Budgets go where walk-ins and sales come from, not likes.":"बजट वहाँ लगे जहाँ से स्टोर विज़िट और बिक्री आए, सिर्फ़ लाइक्स नहीं।",
+"Meta + Google campaign strategy":"Meta + Google कैंपेन रणनीति",
+"Pixel, Conversions API and offline sales upload":"Pixel, Conversions API और ऑफ़लाइन बिक्री अपलोड",
+"Weekly cost-per-walk-in reporting":"हर हफ़्ते प्रति स्टोर विज़िट लागत की रिपोर्ट",
+"Creatives and audiences built for fashion retail.":"फ़ैशन रिटेल के लिए बने क्रिएटिव और ऑडियंस।",
+"Reels, carousels, collection and lead ads":"Reels, carousel, collection और lead ads",
+"Click-to-WhatsApp and store-traffic ads":"Click-to-WhatsApp और store-traffic ads",
+"Retargeting and lookalikes of your buyers":"रिटारगेटिंग और आपके ग्राहकों जैसे नए लोग",
+"CRM setup":"CRM सेटअप",
+"Every customer, enquiry and purchase in one place.":"हर ग्राहक, पूछताछ और ख़रीदारी एक जगह।",
+"Lead capture from forms, WhatsApp and calls":"फ़ॉर्म, WhatsApp और कॉल से लीड",
+"Segments: bridal, groom, festive, VIP":"सेगमेंट: ब्राइडल, दूल्हा, त्योहार, VIP",
+"Stylist assignment and visit tracking":"स्टाइलिस्ट असाइनमेंट और विज़िट ट्रैकिंग",
+"WhatsApp marketing":"WhatsApp मार्केटिंग",
+"Official WhatsApp Business API, not personal phones.":"ऑफ़िशियल WhatsApp Business API, पर्सनल फ़ोन नहीं।",
+"Approved templates with images and buttons":"फ़ोटो और बटन वाले अप्रूव्ड टेम्पलेट",
+"Catalogue, booking and broadcast flows":"कैटलॉग, बुकिंग और ब्रॉडकास्ट",
+"Shared inbox for your sales team":"सेल्स टीम के लिए एक साझा इनबॉक्स",
+"SMS marketing":"SMS मार्केटिंग",
+"Reliable reach for offers and reminders.":"ऑफ़र और रिमाइंडर के लिए भरोसेमंद पहुँच।",
+"DLT registration, sender ID and templates":"DLT रजिस्ट्रेशन, sender ID और टेम्पलेट",
+"Trial reminders and OTP-style alerts":"ट्रायल रिमाइंडर और OTP जैसे अलर्ट",
+"Festive blasts with opt-out handling":"opt-out के साथ त्योहार के बल्क मैसेज",
+"Email marketing":"ईमेल मार्केटिंग",
+"Beautiful lookbooks that land in the inbox.":"सुंदर लुकबुक जो सीधे इनबॉक्स में पहुँचें।",
+"Welcome, new-arrival and festive series":"वेलकम, नया कलेक्शन और त्योहार सीरीज़",
+"Birthday and anniversary automations":"जन्मदिन और सालगिरह के ऑटोमेशन",
+"Domain setup so mail avoids spam":"डोमेन सेटअप ताकि मेल स्पैम में न जाए",
+"What to expect":"क्या उम्मीद करें",
+"Measured in walk-ins and bills, not likes.":"नतीजे स्टोर विज़िट और बिल में, लाइक्स में नहीं।",
+"Cost per lead":"प्रति लीड लागत",
+"↓ from ₹110 with boosted posts":"↓ बूस्ट पोस्ट के ₹110 से",
+"Leads who visit the store":"लीड जो स्टोर आते हैं",
+"↑ with instant WhatsApp welcome":"↑ तुरंत WhatsApp स्वागत से",
+"WhatsApp read rate":"WhatsApp पढ़े जाने की दर",
+"vs about 20% for email alone":"सिर्फ़ ईमेल में लगभग 20%",
+"Repeat customers in 6 months":"6 महीने में दोबारा आने वाले ग्राहक",
+"from festive and birthday journeys":"त्योहार और जन्मदिन जर्नी से",
+"Sample monthly funnel · bridal showroom":"सैंपल मासिक फ़नल · ब्राइडल शोरूम",
+"₹85,000 Meta spend, one city":"₹85,000 Meta ख़र्च, एक शहर",
+"Reached":"पहुँच",
+"4.2L":"4.2 लाख",
+"Leads":"लीड",
+"Replied on WA":"WA पर जवाब",
+"Purchases":"ख़रीदारी",
+"Illustrative figures for a fictional showroom. *Walk-in uplift compares instant multi-channel follow-up with manual call-backs.":"एक काल्पनिक शोरूम के उदाहरण आँकड़े। *स्टोर विज़िट में बढ़त, तुरंत मल्टी-चैनल फ़ॉलो-अप और हाथ से कॉल-बैक की तुलना है।",
+"Launch plan":"लॉन्च प्लान",
+"Live in 14 days.":"14 दिन में लाइव।",
+"DAYS 1–3":"दिन 1–3",
+"Audit":"ऑडिट",
+"Your store, best sellers, past customers, current ads and pages.":"आपका स्टोर, बेस्टसेलर, पुराने ग्राहक, मौजूदा ads और पेज।",
+"DAYS 4–8":"दिन 4–8",
+"Set up":"सेटअप",
+"CRM, WhatsApp API, DLT SMS, email domain, pixel and tracking.":"CRM, WhatsApp API, DLT SMS, ईमेल डोमेन, pixel और ट्रैकिंग।",
+"DAYS 9–12":"दिन 9–12",
+"Create":"क्रिएटिव",
+"Ad creatives, lead forms and the welcome and festive journeys.":"Ad क्रिएटिव, lead form, और वेलकम व त्योहार जर्नी।",
+"DAY 14+":"दिन 14+",
+"Launch & grow":"लॉन्च और ग्रोथ",
+"Ads live, weekly report on leads, visits and sales, then optimise.":"Ads लाइव, लीड, विज़िट और बिक्री की साप्ताहिक रिपोर्ट, फिर लगातार सुधार।",
+"Questions":"सवाल",
+"Before you ask.":"आपके सवालों के जवाब।",
+"Do I need the WhatsApp Business API, or can my staff use their phones?":"क्या WhatsApp Business API ज़रूरी है, या स्टाफ़ अपने फ़ोन से काम चला सकता है?",
+"For automatic welcome messages, images, buttons and broadcasts you need the official API. I set it up on your business number with a verified display name. Meta charges per conversation, separately from the ad budget.":"अपने-आप वेलकम मैसेज, फ़ोटो, बटन और ब्रॉडकास्ट के लिए ऑफ़िशियल API चाहिए। मैं इसे आपके बिज़नेस नंबर पर, वेरिफ़ाइड नाम के साथ सेट करता हूँ। Meta हर बातचीत का शुल्क अलग से लेता है, ad बजट से अलग।",
+"What is DLT, and do I need it for SMS?":"DLT क्या है, और क्या SMS के लिए ज़रूरी है?",
+"In India, promotional and transactional SMS must use a DLT-registered sender ID and approved templates. I handle the registration and template approvals as part of setup.":"भारत में प्रमोशनल और ट्रांज़ैक्शनल SMS के लिए DLT-रजिस्टर्ड sender ID और अप्रूव्ड टेम्पलेट ज़रूरी हैं। रजिस्ट्रेशन और टेम्पलेट अप्रूवल सेटअप में मैं ही करवाता हूँ।",
+"How much should I spend on Meta ads?":"Meta ads पर कितना ख़र्च करना चाहिए?",
+"Most single-store showrooms start between ₹30,000 and ₹1,00,000 a month, higher in wedding season. We start small, measure cost per walk-in, and scale what works.":"ज़्यादातर एक-स्टोर वाले शोरूम ₹30,000 से ₹1,00,000 महीने से शुरू करते हैं, शादी के सीज़न में ज़्यादा। हम छोटे से शुरू करते हैं, प्रति स्टोर विज़िट लागत मापते हैं, और जो चले उसे बढ़ाते हैं।",
+"Can it connect to my billing software?":"क्या यह मेरे बिलिंग सॉफ़्टवेयर से जुड़ सकता है?",
+"Yes. Purchases can be imported from your billing or POS system, so the CRM knows who bought what, and Meta learns which ads drove real sales.":"हाँ। आपके बिलिंग या POS सिस्टम से ख़रीदारी इंपोर्ट हो सकती है, ताकि CRM को पता रहे किसने क्या ख़रीदा, और Meta सीखे कि किन ads से असली बिक्री हुई।",
+"Who owns the customer data?":"ग्राहकों का डेटा किसका होगा?",
+"You do. The CRM, WhatsApp number and ad accounts are set up in your business name, and you can export everything at any time.":"आपका। CRM, WhatsApp नंबर और ad अकाउंट आपके बिज़नेस के नाम पर बनते हैं, और आप कभी भी सब कुछ एक्सपोर्ट कर सकते हैं।",
+"Ready to fill your showroom this wedding season?":"इस शादी के सीज़न में शोरूम भरने के लिए तैयार हैं?",
+"Get a free 20-minute audit of your ads, Instagram and follow-up. You'll leave with three changes you can make this week, whether we work together or not.":"अपने ads, Instagram और फ़ॉलो-अप का 20 मिनट का फ़्री ऑडिट पाएँ। आपको तीन ऐसे बदलाव मिलेंगे जो आप इसी हफ़्ते कर सकें, चाहे हम साथ काम करें या नहीं।",
+"Book my free audit →":"मेरा फ़्री ऑडिट बुक करें →",
+"Email me":"ईमेल करें",
+"Showroom names, people and results on this page are fictional examples.":"इस पेज पर शोरूम, लोग और नतीजे काल्पनिक उदाहरण हैं।"
+};
+
+/* ===== Language ===== */
+let LANG="en";
+const tr=(en,hi)=>LANG==="hi"?hi:en;
+const ORIG=new WeakMap();
+function translateStatic(){
+ const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;const list=[];
+ while(n=w.nextNode()){if(n.parentElement.closest("script,style,#aInfo,#aMedia,#aSheet,.ch-b,#cTags"))continue;list.push(n);}
+ list.forEach(n=>{
+  if(!ORIG.has(n))ORIG.set(n,n.nodeValue);
+  const en=ORIG.get(n),k=en.replace(/\s+/g," ").trim();
+  if(LANG==="hi"&&HI[k]){const lead=en.match(/^\s*/)[0],tail=en.match(/\s*$/)[0];n.nodeValue=lead+HI[k]+tail;}
+  else n.nodeValue=en;
+ });
+}
+function setLang(l,user){
+ LANG=l==="hi"?"hi":"en";
+ document.documentElement.lang=LANG;
+ document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===LANG));
+ translateStatic();
+ if(user){try{localStorage.setItem("sg_lang",LANG);}catch(e){}}
+ if(window._afterLang)window._afterLang();
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.l,true)));
+(function(){let l="en";try{const q=new URLSearchParams(location.search).get("lang");if(q)l=q;else{const s=localStorage.getItem("sg_lang");if(s)l=s;}}catch(e){}if(l==="hi")setLang("hi");})();
+
 /* ===== Live demo ===== */
 const INT=[
- {n:"Bridal lehenga",img:"bride.jpg",pos:"62% 52%",sty:"Meera",score:"92 · Hot",tags:["Bridal","High intent","Wedding: "],head:"Your bridal edit is ready",wa:"our Bridal Lehenga collection",src:"Instagram · Bridal ad"},
- {n:"Wedding sherwani",img:"groom.jpg",pos:"50% 18%",sty:"Arjun",score:"89 · Hot",tags:["Groom","High intent","Wedding: "],head:"Your groom edit is ready",wa:"our Wedding Sherwani collection",src:"Instagram · Groom ad"},
- {n:"Silk saree",img:"saree-pink.jpg",pos:"50% 30%",sty:"Kavya",score:"81 · Warm",tags:["Sarees","Festive","Occasion: "],head:"Silks picked for you",wa:"our Kanjivaram &amp; Banarasi silks",src:"Instagram · Silk ad"},
- {n:"Party & festive wear",img:"saree-wine.jpg",pos:"50% 30%",sty:"Kavya",score:"78 · Warm",tags:["Festive","Party","Occasion: "],head:"Your festive edit is ready",wa:"our Festive &amp; Party collection",src:"Instagram · Festive reel"},
- {n:"Men's casual",img:"m-blazer.jpg",pos:"50% 30%",sty:"Arjun",score:"70 · Warm",tags:["Menswear","Casual","Visit: "],head:"Your new-season edit",wa:"our Men's new-season collection",src:"Instagram · Menswear ad"}];
+ {n:"Bridal lehenga",hn:"ब्राइडल लहंगा",img:"bride.jpg",pos:"62% 52%",sty:"Meera",hsty:"मीरा",score:["92 · Hot","92 · हॉट"],tags:[["Bridal","ब्राइडल"],["High intent","पक्की रुचि"],["Wedding: ","शादी: "]],head:["Your bridal edit is ready","आपका ब्राइडल कलेक्शन तैयार है"],wa:["our Bridal Lehenga collection","हमारे ब्राइडल लहंगा कलेक्शन"],src:["Instagram · Bridal ad","Instagram · ब्राइडल ad"]},
+ {n:"Wedding sherwani",hn:"शादी की शेरवानी",img:"groom.jpg",pos:"50% 18%",sty:"Arjun",hsty:"अर्जुन",score:["89 · Hot","89 · हॉट"],tags:[["Groom","दूल्हा"],["High intent","पक्की रुचि"],["Wedding: ","शादी: "]],head:["Your groom edit is ready","आपका दूल्हा कलेक्शन तैयार है"],wa:["our Wedding Sherwani collection","हमारे शेरवानी कलेक्शन"],src:["Instagram · Groom ad","Instagram · दूल्हा ad"]},
+ {n:"Silk saree",hn:"सिल्क साड़ी",img:"saree-pink.jpg",pos:"50% 30%",sty:"Kavya",hsty:"काव्या",score:["81 · Warm","81 · वॉर्म"],tags:[["Sarees","साड़ियाँ"],["Festive","त्योहार"],["Occasion: ","मौक़ा: "]],head:["Silks picked for you","आपके लिए चुनी गई सिल्क"],wa:["our Kanjivaram &amp; Banarasi silks","हमारी कांजीवरम और बनारसी सिल्क"],src:["Instagram · Silk ad","Instagram · सिल्क ad"]},
+ {n:"Party & festive wear",hn:"पार्टी और त्योहार के कपड़े",img:"saree-wine.jpg",pos:"50% 30%",sty:"Kavya",hsty:"काव्या",score:["78 · Warm","78 · वॉर्म"],tags:[["Festive","त्योहार"],["Party","पार्टी"],["Occasion: ","मौक़ा: "]],head:["Your festive edit is ready","आपका त्योहार कलेक्शन तैयार है"],wa:["our Festive &amp; Party collection","हमारे त्योहार और पार्टी कलेक्शन"],src:["Instagram · Festive reel","Instagram · त्योहार reel"]},
+ {n:"Men's casual",hn:"मेन्स कैज़ुअल",img:"m-blazer.jpg",pos:"50% 30%",sty:"Arjun",hsty:"अर्जुन",score:["70 · Warm","70 · वॉर्म"],tags:[["Menswear","मेन्सवियर"],["Casual","कैज़ुअल"],["Visit: ","विज़िट: "]],head:["Your new-season edit","आपका नया सीज़न कलेक्शन"],wa:["our Men's new-season collection","हमारे मेन्स नए सीज़न कलेक्शन"],src:["Instagram · Menswear ad","Instagram · मेन्सवियर ad"]}];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let T=[],running=false,userRun=false;const clr=()=>{T.forEach(clearTimeout);T=[];};
+let T=[],running=false,userRun=false,demoStarted=false;const clr=()=>{T.forEach(clearTimeout);T=[];};
 const at=(ms,f)=>T.push(setTimeout(f,reduce?0:ms));
 function mask(p){const d=p.replace(/\D/g,"").slice(-10);if(d.length<10)return "+91 "+d;return `+91 ${d.slice(0,2)}XXX XX${d.slice(7)}`;}
 function wait(el,txt){el.innerHTML=`<div class="wait"><i></i>${txt}</div>`;}
@@ -618,36 +879,41 @@ function fly(a,b,col,done){
   if(t<1)requestAnimationFrame(s);else{g.remove();p.remove();done();}})(t0);
 }
 function run(){
- clr();running=true;
- const name=($("fName").value.trim()||"Priya Sharma").slice(0,30),first=esc(name.split(/\s+/)[0]),I=INT[+$("fInt").value],when=$("fWhen").value,ph=mask($("fPhone").value||"9876543210");
- const ini=name.split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase();
- $("cAv").textContent=ini;$("cName").textContent=name;$("cPhone").textContent=ph;$("cInt").textContent=I.n;$("cWhen").textContent=when;$("cSty").textContent=I.sty;$("cScore").textContent=when==="Just browsing"?"54 · Nurture":I.score;
- $("cFields").firstElementChild.querySelector("b").textContent=I.src;
- const fl=[...$("cFields").children];fl.forEach(d=>d.classList.remove("in"));$("cTags").innerHTML="";$("cSt").textContent="Waiting";$("cSt").className="st";
- $("cTrig").className="trig";$("cTrigT").textContent="Journey: Welcome series · waiting";$("cTime").textContent="0.0s";
- ["chS","chW","chE"].forEach(i=>$(i).classList.remove("on"));wait($("bS"),"SMS arrives here");wait($("bW"),"WhatsApp arrives here");wait($("bE"),"Email arrives here");
+ clr();running=true;demoStarted=true;
+ const H=LANG==="hi";
+ const name=($("fName").value.trim()||"Priya Sharma").slice(0,30),first=esc(name.split(/\s+/)[0]),I=INT[+$("fInt").value],wi=$("fWhen").selectedIndex,when=$("fWhen").options[wi].text,ph=mask($("fPhone").value||"9876543210");
+ const ini=name.split(/\s+/).map(w=>w[0]||"").join("").slice(0,2).toUpperCase(),sty=H?I.hsty:I.sty,iname=H?I.hn:I.n;
+ $("cAv").textContent=ini;$("cName").textContent=name;$("cPhone").textContent=ph;$("cInt").textContent=iname;$("cWhen").textContent=when;$("cSty").textContent=sty;$("cScore").textContent=wi===3?tr("54 · Nurture","54 · नर्चर"):I.score[H?1:0];
+ $("cFields").firstElementChild.querySelector("b").textContent=I.src[H?1:0];
+ const fl=[...$("cFields").children];fl.forEach(d=>d.classList.remove("in"));$("cTags").innerHTML="";$("cSt").textContent=tr("Waiting","इंतज़ार");$("cSt").className="st";
+ $("cTrig").className="trig";$("cTrigT").textContent=tr("Journey: Welcome series · waiting","जर्नी: वेलकम सीरीज़ · इंतज़ार");$("cTime").textContent="0.0s";
+ ["chS","chW","chE"].forEach(i=>$(i).classList.remove("on"));wait($("bS"),tr("SMS arrives here","SMS यहाँ आएगा"));wait($("bW"),tr("WhatsApp arrives here","WhatsApp यहाँ आएगा"));wait($("bE"),tr("Email arrives here","ईमेल यहाँ आएगा"));
  [...$("nextList").children].forEach(l=>l.classList.remove("in"));
- $("fBtn").textContent="Submitting…";
- const t0=performance.now();let tick=0;
+ $("fBtn").textContent=tr("Submitting…","भेजा जा रहा है…");
+ let tick=0;
  const go=()=>{
-  $("fBtn").innerHTML="Sent &#10003; · Try again";if(userRun&&innerWidth<980)setTimeout(()=>document.querySelector(".chans").scrollIntoView({behavior:"smooth",block:"start"}),1500);userRun=false;
-  $("cSt").textContent="New customer";$("cSt").className="st on";
+  $("fBtn").innerHTML=tr("Sent &#10003; · Try again","भेज दिया &#10003; · फिर आज़माएँ");
+  if(userRun&&innerWidth<980)setTimeout(()=>document.querySelector(".chans").scrollIntoView({behavior:"smooth",block:"start"}),1500);userRun=false;
+  $("cSt").textContent=tr("New customer","नया ग्राहक");$("cSt").className="st on";
   fl.forEach((d,i)=>at(120+i*160,()=>d.classList.add("in")));
-  const tg=[I.tags[0],I.tags[1],I.tags[2]+when,"Consent: WA · SMS · Email"];
+  const tg=[I.tags[0][H?1:0],I.tags[1][H?1:0],I.tags[2][H?1:0]+when,tr("Consent: WA · SMS · Email","सहमति: WA · SMS · ईमेल")];
   tg.forEach((t,i)=>at(1100+i*180,()=>{const s=document.createElement("span");if(i===1)s.className="w";s.textContent=t;$("cTags").appendChild(s);}));
-  at(1800,()=>{$("cTrig").className="trig on";$("cTrigT").textContent="Journey started: Welcome series → SMS · WhatsApp · Email";
+  at(1800,()=>{$("cTrig").className="trig on";$("cTrigT").textContent=tr("Journey started: Welcome series → SMS · WhatsApp · Email","जर्नी शुरू: वेलकम सीरीज़ → SMS · WhatsApp · ईमेल");
    const st=performance.now();const tf=()=>{if(!running)return;$("cTime").textContent=((performance.now()-st)/1000+0.4).toFixed(1)+"s";tick=requestAnimationFrame(tf);};tf();});
-  // SMS
-  at(2300,()=>{$("chS").classList.add("on");$("bS").innerHTML=`<div class="msg">Hi ${first}, welcome to Rangmahal Fashion House! Your 10% welcome offer on ${esc(I.n.toLowerCase())}: code <b>WELCOME10</b>, valid 30 days. Visit us at MI Road, Jaipur. Book a trial: rngml.in/t -Rangmahal<small>Now · Delivered</small></div>`;});
-  // WhatsApp
+  at(2300,()=>{$("chS").classList.add("on");$("bS").innerHTML=H
+   ?`<div class="msg">नमस्ते ${first}, रंगमहल फ़ैशन हाउस में आपका स्वागत है! ${esc(iname)} पर आपका 10% वेलकम ऑफ़र: कोड <b>WELCOME10</b>, 30 दिन के लिए। हमसे मिलें MI रोड, जयपुर। ट्रायल बुक करें: rngml.in/t -Rangmahal<small>अभी · पहुँच गया</small></div>`
+   :`<div class="msg">Hi ${first}, welcome to Rangmahal Fashion House! Your 10% welcome offer on ${esc(I.n.toLowerCase())}: code <b>WELCOME10</b>, valid 30 days. Visit us at MI Road, Jaipur. Book a trial: rngml.in/t -Rangmahal<small>Now · Delivered</small></div>`;});
   at(3300,()=>{$("chW").classList.add("on");$("bW").innerHTML='<div class="typing"><i></i><i></i><i></i></div>';});
-  at(4300,()=>{$("bW").innerHTML=`<div class="msg"><div class="wa-img"><img src="img/${I.img}" alt="" style="object-position:${I.pos}"></div>Namaste ${first} &#128591; Thank you for your interest in ${I.wa}. Here are this week's new arrivals, picked by our stylist ${I.sty}.<br><br>Would you like a private trial?<small>Now &#10003;&#10003;</small></div><div class="wbtns"><span>&#128197; Book a trial</span><span>&#128247; See full lookbook</span><span>&#128205; Store location</span></div>`;});
+  at(4300,()=>{const img=`<div class="wa-img"><img src="img/${I.img}" alt="" style="object-position:${I.pos}"></div>`;$("bW").innerHTML=H
+   ?`<div class="msg">${img}नमस्ते ${first} &#128591; ${I.wa[1]} में रुचि दिखाने के लिए धन्यवाद। यह रहा इस हफ़्ते का नया कलेक्शन, हमारी स्टाइलिस्ट ${sty} ने आपके लिए चुना है।<br><br>क्या आप प्राइवेट ट्रायल बुक करना चाहेंगी?<small>अभी &#10003;&#10003;</small></div><div class="wbtns"><span>&#128197; ट्रायल बुक करें</span><span>&#128247; पूरी लुकबुक देखें</span><span>&#128205; स्टोर लोकेशन</span></div>`
+   :`<div class="msg">${img}Namaste ${first} &#128591; Thank you for your interest in ${I.wa[0]}. Here are this week's new arrivals, picked by our stylist ${sty}.<br><br>Would you like a private trial?<small>Now &#10003;&#10003;</small></div><div class="wbtns"><span>&#128197; Book a trial</span><span>&#128247; See full lookbook</span><span>&#128205; Store location</span></div>`;});
   at(5600,()=>{const b=$("bW").querySelector(".wbtns span");if(b)b.classList.add("tap");});
-  at(6100,()=>{$("bW").insertAdjacentHTML("beforeend",`<div class="msg out">Book a trial<small>Now &#10003;&#10003;</small></div>`);});
-  at(6900,()=>{$("bW").insertAdjacentHTML("beforeend",`<div class="msg">Done! &#10024; Saturday, 5:00 PM with ${I.sty} at MI Road. We'll remind you the day before.<small>Now &#10003;&#10003;</small></div>`);$("bW").scrollTop=999;});
-  // Email
-  at(5000,()=>{$("chE").classList.add("on");$("bE").innerHTML=`<div class="mail"><div class="mh"><b>Welcome to Rangmahal, ${first} &mdash; your 10% gift inside</b><span>From: Rangmahal Fashion House</span></div><div class="hi"><img src="img/${I.img}" alt="" style="object-position:${I.pos}"><div>${I.head}</div></div><div class="mb">Dear ${first}, thank you for choosing us. Show this code in store or use it online:<div class="code">WELCOME10</div><span class="cta">Book your private trial</span></div></div>`;});
-  at(5400,()=>{cancelAnimationFrame(tick);$("cTime").textContent="6.8s";$("cTrigT").textContent="All 3 welcome messages delivered · next: Day 1 lookbook";});
+  at(6100,()=>{$("bW").insertAdjacentHTML("beforeend",`<div class="msg out">${tr("Book a trial","ट्रायल बुक करें")}<small>${tr("Now","अभी")} &#10003;&#10003;</small></div>`);});
+  at(6900,()=>{$("bW").insertAdjacentHTML("beforeend",H?`<div class="msg">हो गया! &#10024; शनिवार, शाम 5 बजे, ${sty} के साथ MI रोड पर। एक दिन पहले हम आपको याद दिला देंगे।<small>अभी &#10003;&#10003;</small></div>`:`<div class="msg">Done! &#10024; Saturday, 5:00 PM with ${sty} at MI Road. We'll remind you the day before.<small>Now &#10003;&#10003;</small></div>`);$("bW").scrollTop=999;});
+  at(5000,()=>{$("chE").classList.add("on");const hi=`<div class="hi"><img src="img/${I.img}" alt="" style="object-position:${I.pos}"><div>${I.head[H?1:0]}</div></div>`;$("bE").innerHTML=H
+   ?`<div class="mail"><div class="mh"><b>रंगमहल में स्वागत है, ${first} — अंदर है आपका 10% तोहफ़ा</b><span>भेजने वाला: Rangmahal Fashion House</span></div>${hi}<div class="mb">प्रिय ${first}, हमें चुनने के लिए धन्यवाद। यह कोड स्टोर में दिखाएँ या ऑनलाइन इस्तेमाल करें:<div class="code">WELCOME10</div><span class="cta">अपना प्राइवेट ट्रायल बुक करें</span></div></div>`
+   :`<div class="mail"><div class="mh"><b>Welcome to Rangmahal, ${first} &mdash; your 10% gift inside</b><span>From: Rangmahal Fashion House</span></div>${hi}<div class="mb">Dear ${first}, thank you for choosing us. Show this code in store or use it online:<div class="code">WELCOME10</div><span class="cta">Book your private trial</span></div></div>`;});
+  at(5400,()=>{cancelAnimationFrame(tick);$("cTime").textContent="6.8s";$("cTrigT").textContent=tr("All 3 welcome messages delivered · next: Day 1 lookbook","तीनों वेलकम मैसेज पहुँच गए · अगला: दिन 1 लुकबुक");});
   [...$("nextList").children].forEach((l,i)=>at(7400+i*260,()=>l.classList.add("in")));
   at(9200,()=>{running=false;});
  };
@@ -660,38 +926,39 @@ io(innerWidth<980?document.querySelector(".chans"):$("demoBox"),()=>setTimeout(r
 /* ===== Meta ads ===== */
 const S=n=>`img/sh${n}.jpg`;
 const ADS=[
- {b:"Noor Bridal Couture",h:"noorbridalcouture",city:"Jaipur",av:"img/mehendi.jpg",fmt:"Lead ad · Instant form",type:"fade",imgs:["img/bride.jpg","img/mehendi.jpg"],cta:"Book now",likes:"3,482",
-  cap:"Your wedding look deserves a private trial. &#10024; Book a free 60-minute bridal styling session at our MI Road studio this month.",
-  obj:"Leads",aud:"Women 22–32 · Jaipur + 40 km · recently engaged",bud:"&#8377;85,000 / 30 days",
-  k:[["2,020","Leads"],["&#8377;42","Cost per lead"],["540","Trials booked"],["&#8377;38.6L","Store sales"]],
-  sheet:{t:"Book a bridal trial",s:"Noor Bridal Couture · MI Road, Jaipur",f:[["Full name","Ananya Rathore"],["WhatsApp number","+91 9XXXX XXX21"],["Wedding month","February 2027"],["Preferred day","Saturday"]],b:"Submit",ok:"&#10003; Submitted · check WhatsApp"},
-  next:[["&#128172;","WhatsApp lookbook and trial slots in 5 seconds"],["&#128105;","Stylist assigned by wedding date and budget"],["&#9993;","SMS reminder the day before the trial"]]},
- {b:"Raj Darbar Sherwanis",h:"rajdarbar.sherwani",city:"Lucknow",av:"img/sh7.jpg",fmt:"Carousel · Click to WhatsApp",type:"car",imgs:[S(1),S(3),S(2),S(8),S(10),S(5)],cta:"Send WhatsApp message",likes:"5,917",
-  cap:"6 groom looks for the 2026 wedding season. Swipe, pick your favourite and send it to us on WhatsApp for price and sizes. &#128081;",
-  obj:"WhatsApp conversations",aud:"Men 24–34 · Lucknow & Kanpur · engaged, wedding planning",bud:"&#8377;60,000 / 30 days",
-  k:[["1,940","WhatsApp chats"],["&#8377;31","Cost per chat"],["410","Store visits"],["&#8377;27.2L","Store sales"]],
-  sheet:{wa:1,t:"Raj Darbar Sherwanis",s:"Typically replies instantly",f:[["out","Hi! I liked look 2, the maroon velvet sherwani. Price and sizes?"],["in","Namaste! &#128591; Maroon Velvet starts at &#8377;34,900, sizes 36–46, with free alterations. Shall we book a fitting?"],["out","Yes, Sunday evening"],["in","Booked &#10003; Sunday 6 PM, Hazratganj store."]]},
-  next:[["&#128450;","Chat saved as a lead with the look he picked"],["&#128197;","Fitting booked and added to the store calendar"],["&#128140;","Family outfit suggestions sent after purchase"]]},
- {b:"Kashvi Silks",h:"kashvisilks",city:"Chennai",av:"img/saree-pink.jpg",fmt:"Reel · Store traffic",type:"reel",imgs:["img/saree-pink.jpg","img/saree-wine.jpg"],cta:"Get directions",likes:"8,204",
-  cap:"The Diwali Silk Edit is here &#129684; Pure Kanjivaram and Banarasi, new pieces every week. Visit us in T. Nagar, open till 9 PM.",
-  obj:"Store traffic",aud:"Women 28–55 · within 8 km of T. Nagar · festive shoppers",bud:"&#8377;45,000 / 21 days",
-  k:[["3.8L","Reach"],["2,300","Store visits (est.)"],["&#8377;20","Cost per visit"],["&#8377;19.4L","Festive sales"]],
-  sheet:{map:1,t:"Kashvi Silks",s:"T. Nagar, Chennai · 2.1 km · Open till 9 PM",b:"Start navigation",ok:"&#10003; 9 min away"},
-  next:[["&#128241;","Number collected at billing with consent"],["&#10024;","Diwali early-access list on WhatsApp"],["&#127873;","Birthday and anniversary offers all year"]]},
- {b:"Urban Loom Menswear",h:"urbanloom.in",city:"Pune",av:"img/m-flannel.jpg",fmt:"Collection · Advantage+ catalogue",type:"coll",imgs:["img/m-coat.jpg","img/m-flannel.jpg","img/m-street.jpg","img/m-blazer.jpg"],cta:"Shop now",likes:"2,761",
-  cap:"Winter edit: overshirts, coats and jackets. &#129509; Any 2 for &#8377;2,999 this weekend, online and at our FC Road store.",
-  obj:"Sales (online + in-store)",aud:"Men 21–40 · Pune · lookalike of past buyers",bud:"&#8377;70,000 / 30 days",
-  k:[["1,180","Purchases"],["6.8&times;","Return on ad spend"],["3,400","New WhatsApp subscribers"],["&#8377;4.76L","Revenue"]],
-  sheet:{shop:1,t:"Plaid overshirt",s:"&#8377;1,599 · Any 2 for &#8377;2,999",b:"Add to cart",ok:"&#10003; Added · 1 more for the offer"},
-  next:[["&#128722;","Cart reminder on WhatsApp after 1 hour"],["&#128230;","Order and delivery updates by SMS"],["&#128084;","New arrivals matched to his size and style"]]},
- {b:"Saath Wedding Studio",h:"saath.weddingstudio",city:"Hyderabad",av:"img/couple.jpg",fmt:"Retargeting · Lead ad",type:"fade",imgs:["img/couple.jpg","img/groom.jpg"],cta:"Book now",likes:"4,390",
-  cap:"Coordinate your looks. &#128145; Matching bride and groom outfits, styled together in one private appointment in Banjara Hills.",
-  obj:"Leads (retargeting)",aud:"Website visitors and form openers, last 30 days + 1% lookalike of buyers",bud:"&#8377;40,000 / 30 days",
-  k:[["860","Leads"],["&#8377;46","Cost per lead"],["210","Couple appointments"],["&#8377;22.8L","Store sales"]],
-  sheet:{t:"Book a couple appointment",s:"Saath Wedding Studio · Banjara Hills",f:[["Your names","Rohan &amp; Sneha"],["WhatsApp number","+91 9XXXX XXX87"],["Wedding date","14 Dec 2026"],["Budget for both","&#8377;1–1.5 lakh"]],b:"Submit",ok:"&#10003; Submitted · check WhatsApp"},
-  next:[["&#128145;","Both partners added and linked in the CRM"],["&#128248;","Colour-matched lookbook on WhatsApp"],["&#128197;","Appointment reminders to both numbers"]]}
+ {b:"Noor Bridal Couture",h:"noorbridalcouture",city:["Jaipur","जयपुर"],av:"img/mehendi.jpg",fmt:["Lead ad · Instant form","Lead ad · इंस्टेंट फ़ॉर्म"],type:"fade",imgs:["img/bride.jpg","img/mehendi.jpg"],cta:["Book now","अभी बुक करें"],likes:"3,482",
+  cap:["Your wedding look deserves a private trial. &#10024; Book a free 60-minute bridal styling session at our MI Road studio this month.","आपके शादी के लुक के लिए प्राइवेट ट्रायल। &#10024; इस महीने हमारे MI रोड स्टूडियो में 60 मिनट का फ़्री ब्राइडल स्टाइलिंग सेशन बुक करें।"],
+  obj:["Leads","लीड"],aud:["Women 22–32 · Jaipur + 40 km · recently engaged","महिलाएँ 22–32 · जयपुर + 40 किमी · हाल ही में सगाई"],bud:["&#8377;85,000 / 30 days","&#8377;85,000 / 30 दिन"],
+  k:[["2,020",["Leads","लीड"]],["&#8377;42",["Cost per lead","प्रति लीड लागत"]],["540",["Trials booked","ट्रायल बुक"]],["&#8377;38.6L",["Store sales","स्टोर बिक्री"]]],
+  sheet:{t:["Book a bridal trial","ब्राइडल ट्रायल बुक करें"],s:["Noor Bridal Couture · MI Road, Jaipur","Noor Bridal Couture · MI रोड, जयपुर"],f:[[["Full name","पूरा नाम"],"Ananya Rathore"],[["WhatsApp number","WhatsApp नंबर"],"+91 9XXXX XXX21"],[["Wedding month","शादी का महीना"],["February 2027","फ़रवरी 2027"]],[["Preferred day","पसंदीदा दिन"],["Saturday","शनिवार"]]],b:["Submit","सबमिट करें"],ok:["&#10003; Submitted · check WhatsApp","&#10003; सबमिट हुआ · WhatsApp देखें"]},
+  next:[["&#128172;",["WhatsApp lookbook and trial slots in 5 seconds","5 सेकंड में WhatsApp लुकबुक और ट्रायल स्लॉट"]],["&#128105;",["Stylist assigned by wedding date and budget","शादी की तारीख़ और बजट के हिसाब से स्टाइलिस्ट"]],["&#9993;",["SMS reminder the day before the trial","ट्रायल से एक दिन पहले SMS रिमाइंडर"]]]},
+ {b:"Raj Darbar Sherwanis",h:"rajdarbar.sherwani",city:["Lucknow","लखनऊ"],av:"img/sh7.jpg",fmt:["Carousel · Click to WhatsApp","Carousel · Click to WhatsApp"],type:"car",imgs:[S(1),S(3),S(2),S(8),S(10),S(5)],cta:["Send WhatsApp message","WhatsApp मैसेज भेजें"],likes:"5,917",
+  cap:["6 groom looks for the 2026 wedding season. Swipe, pick your favourite and send it to us on WhatsApp for price and sizes. &#128081;","2026 शादी सीज़न के लिए दूल्हे के 6 लुक। स्वाइप करें, अपना पसंदीदा चुनें और क़ीमत व साइज़ के लिए हमें WhatsApp करें। &#128081;"],
+  obj:["WhatsApp conversations","WhatsApp बातचीत"],aud:["Men 24–34 · Lucknow & Kanpur · engaged, wedding planning","पुरुष 24–34 · लखनऊ और कानपुर · सगाई हो चुकी, शादी की तैयारी"],bud:["&#8377;60,000 / 30 days","&#8377;60,000 / 30 दिन"],
+  k:[["1,940",["WhatsApp chats","WhatsApp चैट"]],["&#8377;31",["Cost per chat","प्रति चैट लागत"]],["410",["Store visits","स्टोर विज़िट"]],["&#8377;27.2L",["Store sales","स्टोर बिक्री"]]],
+  sheet:{wa:1,t:["Raj Darbar Sherwanis","Raj Darbar Sherwanis"],s:["Typically replies instantly","आमतौर पर तुरंत जवाब देते हैं"],f:[["out",["Hi! I liked look 2, the maroon velvet sherwani. Price and sizes?","नमस्ते! मुझे लुक 2, मैरून वेलवेट शेरवानी पसंद आई। क़ीमत और साइज़?"]],["in",["Namaste! &#128591; Maroon Velvet starts at &#8377;34,900, sizes 36–46, with free alterations. Shall we book a fitting?","नमस्ते! &#128591; मैरून वेलवेट &#8377;34,900 से शुरू, साइज़ 36–46, फ़्री ऑल्टरेशन के साथ। फ़िटिंग बुक करें?"]],["out",["Yes, Sunday evening","हाँ, रविवार शाम"]],["in",["Booked &#10003; Sunday 6 PM, Hazratganj store.","बुक हो गया &#10003; रविवार शाम 6 बजे, हज़रतगंज स्टोर।"]]]},
+  next:[["&#128450;",["Chat saved as a lead with the look he picked","चुने गए लुक के साथ चैट लीड के रूप में सेव"]],["&#128197;",["Fitting booked and added to the store calendar","फ़िटिंग बुक और स्टोर कैलेंडर में दर्ज"]],["&#128140;",["Family outfit suggestions sent after purchase","ख़रीदारी के बाद परिवार के कपड़ों के सुझाव"]]]},
+ {b:"Kashvi Silks",h:"kashvisilks",city:["Chennai","चेन्नई"],av:"img/saree-pink.jpg",fmt:["Reel · Store traffic","Reel · स्टोर ट्रैफ़िक"],type:"reel",imgs:["img/saree-pink.jpg","img/saree-wine.jpg"],cta:["Get directions","रास्ता देखें"],likes:"8,204",
+  cap:["The Diwali Silk Edit is here &#129684; Pure Kanjivaram and Banarasi, new pieces every week. Visit us in T. Nagar, open till 9 PM.","दिवाली सिल्क कलेक्शन आ गया &#129684; शुद्ध कांजीवरम और बनारसी, हर हफ़्ते नए पीस। टी. नगर में आइए, रात 9 बजे तक खुला।"],
+  obj:["Store traffic","स्टोर ट्रैफ़िक"],aud:["Women 28–55 · within 8 km of T. Nagar · festive shoppers","महिलाएँ 28–55 · टी. नगर से 8 किमी के अंदर · त्योहार की ख़रीदारी"],bud:["&#8377;45,000 / 21 days","&#8377;45,000 / 21 दिन"],
+  k:[["3.8L",["Reach","पहुँच"]],["2,300",["Store visits (est.)","स्टोर विज़िट (अनुमान)"]],["&#8377;20",["Cost per visit","प्रति विज़िट लागत"]],["&#8377;19.4L",["Festive sales","त्योहार बिक्री"]]],
+  sheet:{map:1,t:["Kashvi Silks","Kashvi Silks"],s:["T. Nagar, Chennai · 2.1 km · Open till 9 PM","टी. नगर, चेन्नई · 2.1 किमी · रात 9 बजे तक खुला"],b:["Start navigation","नेविगेशन शुरू करें"],ok:["&#10003; 9 min away","&#10003; 9 मिनट दूर"]},
+  next:[["&#128241;",["Number collected at billing with consent","बिलिंग पर सहमति के साथ नंबर लिया"]],["&#10024;",["Diwali early-access list on WhatsApp","WhatsApp पर दिवाली की अर्ली-एक्सेस लिस्ट"]],["&#127873;",["Birthday and anniversary offers all year","पूरे साल जन्मदिन और सालगिरह के ऑफ़र"]]]},
+ {b:"Urban Loom Menswear",h:"urbanloom.in",city:["Pune","पुणे"],av:"img/m-flannel.jpg",fmt:["Collection · Advantage+ catalogue","Collection · Advantage+ कैटलॉग"],type:"coll",imgs:["img/m-coat.jpg","img/m-flannel.jpg","img/m-street.jpg","img/m-blazer.jpg"],cta:["Shop now","अभी ख़रीदें"],likes:"2,761",
+  cap:["Winter edit: overshirts, coats and jackets. &#129509; Any 2 for &#8377;2,999 this weekend, online and at our FC Road store.","विंटर कलेक्शन: ओवरशर्ट, कोट और जैकेट। &#129509; इस वीकेंड कोई भी 2 सिर्फ़ &#8377;2,999 में, ऑनलाइन और FC रोड स्टोर पर।"],
+  obj:["Sales (online + in-store)","बिक्री (ऑनलाइन + स्टोर)"],aud:["Men 21–40 · Pune · lookalike of past buyers","पुरुष 21–40 · पुणे · पुराने ग्राहकों जैसे लोग"],bud:["&#8377;70,000 / 30 days","&#8377;70,000 / 30 दिन"],
+  k:[["1,180",["Purchases","ख़रीदारी"]],["6.8&times;",["Return on ad spend","ad ख़र्च पर रिटर्न"]],["3,400",["New WhatsApp subscribers","नए WhatsApp सब्सक्राइबर"]],["&#8377;4.76L",["Revenue","कमाई"]]],
+  sheet:{shop:1,t:["Plaid overshirt","प्लेड ओवरशर्ट"],s:["&#8377;1,599 · Any 2 for &#8377;2,999","&#8377;1,599 · कोई भी 2, &#8377;2,999 में"],note:["Free alteration at FC Road store","FC रोड स्टोर पर फ़्री ऑल्टरेशन"],b:["Add to cart","कार्ट में डालें"],ok:["&#10003; Added · 1 more for the offer","&#10003; जुड़ गया · ऑफ़र के लिए 1 और"]},
+  next:[["&#128722;",["Cart reminder on WhatsApp after 1 hour","1 घंटे बाद WhatsApp पर कार्ट रिमाइंडर"]],["&#128230;",["Order and delivery updates by SMS","SMS से ऑर्डर और डिलीवरी अपडेट"]],["&#128084;",["New arrivals matched to his size and style","उनके साइज़ और स्टाइल के हिसाब से नया कलेक्शन"]]]},
+ {b:"Saath Wedding Studio",h:"saath.weddingstudio",city:["Hyderabad","हैदराबाद"],av:"img/couple.jpg",fmt:["Retargeting · Lead ad","रिटारगेटिंग · Lead ad"],type:"fade",imgs:["img/couple.jpg","img/groom.jpg"],cta:["Book now","अभी बुक करें"],likes:"4,390",
+  cap:["Coordinate your looks. &#128145; Matching bride and groom outfits, styled together in one private appointment in Banjara Hills.","अपने लुक मैच कीजिए। &#128145; दुल्हन और दूल्हे के मैचिंग कपड़े, बंजारा हिल्स में एक ही प्राइवेट अपॉइंटमेंट में।"],
+  obj:["Leads (retargeting)","लीड (रिटारगेटिंग)"],aud:["Website visitors and form openers, last 30 days + 1% lookalike of buyers","पिछले 30 दिन के वेबसाइट विज़िटर और फ़ॉर्म खोलने वाले + ग्राहकों जैसे 1% लोग"],bud:["&#8377;40,000 / 30 days","&#8377;40,000 / 30 दिन"],
+  k:[["860",["Leads","लीड"]],["&#8377;46",["Cost per lead","प्रति लीड लागत"]],["210",["Couple appointments","कपल अपॉइंटमेंट"]],["&#8377;22.8L",["Store sales","स्टोर बिक्री"]]],
+  sheet:{t:["Book a couple appointment","कपल अपॉइंटमेंट बुक करें"],s:["Saath Wedding Studio · Banjara Hills","Saath Wedding Studio · बंजारा हिल्स"],f:[[["Your names","आपके नाम"],["Rohan &amp; Sneha","रोहन और स्नेहा"]],[["WhatsApp number","WhatsApp नंबर"],"+91 9XXXX XXX87"],[["Wedding date","शादी की तारीख़"],["14 Dec 2026","14 दिसंबर 2026"]],[["Budget for both","दोनों का बजट"],["&#8377;1–1.5 lakh","&#8377;1–1.5 लाख"]]],b:["Submit","सबमिट करें"],ok:["&#10003; Submitted · check WhatsApp","&#10003; सबमिट हुआ · WhatsApp देखें"]},
+  next:[["&#128145;",["Both partners added and linked in the CRM","दोनों पार्टनर CRM में जुड़े और लिंक हुए"]],["&#128248;",["Colour-matched lookbook on WhatsApp","WhatsApp पर रंग-मैच लुकबुक"]],["&#128197;",["Appointment reminders to both numbers","दोनों नंबरों पर अपॉइंटमेंट रिमाइंडर"]]]}
 ];
-let ai=0,aT=[],aAuto=true,aVis=false;const ac=()=>{aT.forEach(clearTimeout);aT=[];};const aat=(ms,f)=>aT.push(setTimeout(f,reduce?0:ms));
+const P=v=>Array.isArray(v)?v[LANG==="hi"?1:0]:v;
+let ai=0,aT=[],aAuto=true,aVis=false,adStarted=false;const ac=()=>{aT.forEach(clearTimeout);aT=[];};const aat=(ms,f)=>aT.push(setTimeout(f,reduce?0:ms));
 $("aTabs").innerHTML=ADS.map((a,i)=>`<button type="button" role="tab" data-i="${i}" aria-selected="${i===0}"><img src="${a.av}" alt="">${a.b}</button>`).join("");
 $("aTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{aAuto=false;showAd(+b.dataset.i);});
 function media(a){
@@ -700,36 +967,37 @@ function media(a){
  return sl+(a.type==="car"?`<span class="cnt" id="aCnt">1/${a.imgs.length}</span><div class="dotsx">${a.imgs.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:"")+(a.type==="reel"?`<span class="reel">&#9654; Reel · 0:15</span>`:"")+`<div class="heart">&#9829;</div>`;
 }
 function sheetHTML(a){const s=a.sheet;
- if(s.wa)return `<h5 style="display:flex;gap:8px;align-items:center"><span style="width:28px;height:28px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;font-size:13px">&#10003;</span>${s.t}</h5><p>${s.s}</p><div class="sf" style="background:#EFE7DD;padding:10px;border-radius:12px">${s.f.map(m=>`<div style="border:0;max-width:88%;${m[0]==="out"?"justify-self:end;background:#D9FDD3":"background:#fff"};border-radius:10px">${m[1]}</div>`).join("")}</div>`;
- if(s.map)return `<h5>${s.t}</h5><p>${s.s}</p><svg viewBox="0 0 300 150" style="width:100%;border-radius:12px;display:block"><rect width="300" height="150" fill="#EEF1F4"/><g stroke="#fff" stroke-width="7"><line x1="0" y1="40" x2="300" y2="58"/><line x1="0" y1="110" x2="300" y2="96"/><line x1="70" y1="0" x2="96" y2="150"/><line x1="210" y1="0" x2="196" y2="150"/></g><path d="M40 128 C 90 120 120 70 200 52" fill="none" stroke="#1A73E8" stroke-width="5" stroke-linecap="round" stroke-dasharray="300" stroke-dashoffset="300"><animate attributeName="stroke-dashoffset" to="0" dur="1.6s" fill="freeze"/></path><circle cx="40" cy="128" r="7" fill="#1A73E8" stroke="#fff" stroke-width="3"/><path d="M200 30 a12 12 0 0 1 12 12 c0 9-12 22-12 22 s-12-13-12-22 a12 12 0 0 1 12-12z" fill="#7A1F35"/><circle cx="200" cy="42" r="4.5" fill="#fff"/></svg><div class="sbtn" id="aSb">${s.b}</div>`;
- if(s.shop)return `<div style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center"><img src="img/m-flannel.jpg" alt="" style="width:90px;height:110px;object-fit:cover;border-radius:10px"><div><h5>${s.t}</h5><p style="margin:0">${s.s}</p><p style="margin:6px 0 0;font-size:11px;color:#2E8B57;font-weight:700">Free alteration at FC Road store</p></div></div><div class="sf" style="grid-template-columns:repeat(4,1fr);margin-top:12px">${["S","M","L","XL"].map(z=>`<div style="text-align:center;${z==="L"?"border-color:#111;font-weight:800":""}">${z}</div>`).join("")}</div><div class="sbtn" id="aSb">${s.b}</div>`;
- return `<h5>${s.t}</h5><p>${s.s}</p><div class="sf">${s.f.map(f=>`<div><small>${f[0]}</small>${f[1]}</div>`).join("")}</div><div class="sbtn" id="aSb">${s.b}</div>`;
+ if(s.wa)return `<h5 style="display:flex;gap:8px;align-items:center"><span style="width:28px;height:28px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;font-size:13px">&#10003;</span>${P(s.t)}</h5><p>${P(s.s)}</p><div class="sf" style="background:#EFE7DD;padding:10px;border-radius:12px">${s.f.map(m=>`<div style="border:0;max-width:88%;${m[0]==="out"?"justify-self:end;background:#D9FDD3":"background:#fff"};border-radius:10px">${P(m[1])}</div>`).join("")}</div>`;
+ if(s.map)return `<h5>${P(s.t)}</h5><p>${P(s.s)}</p><svg viewBox="0 0 300 150" style="width:100%;border-radius:12px;display:block"><rect width="300" height="150" fill="#EEF1F4"/><g stroke="#fff" stroke-width="7"><line x1="0" y1="40" x2="300" y2="58"/><line x1="0" y1="110" x2="300" y2="96"/><line x1="70" y1="0" x2="96" y2="150"/><line x1="210" y1="0" x2="196" y2="150"/></g><path d="M40 128 C 90 120 120 70 200 52" fill="none" stroke="#1A73E8" stroke-width="5" stroke-linecap="round" stroke-dasharray="300" stroke-dashoffset="300"><animate attributeName="stroke-dashoffset" to="0" dur="1.6s" fill="freeze"/></path><circle cx="40" cy="128" r="7" fill="#1A73E8" stroke="#fff" stroke-width="3"/><path d="M200 30 a12 12 0 0 1 12 12 c0 9-12 22-12 22 s-12-13-12-22 a12 12 0 0 1 12-12z" fill="#7A1F35"/><circle cx="200" cy="42" r="4.5" fill="#fff"/></svg><div class="sbtn" id="aSb">${P(s.b)}</div>`;
+ if(s.shop)return `<div style="display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center"><img src="img/m-flannel.jpg" alt="" style="width:90px;height:110px;object-fit:cover;border-radius:10px"><div><h5>${P(s.t)}</h5><p style="margin:0">${P(s.s)}</p><p style="margin:6px 0 0;font-size:11px;color:#2E8B57;font-weight:700">${P(s.note)}</p></div></div><div class="sf" style="grid-template-columns:repeat(4,1fr);margin-top:12px">${["S","M","L","XL"].map(z=>`<div style="text-align:center;${z==="L"?"border-color:#111;font-weight:800":""}">${z}</div>`).join("")}</div><div class="sbtn" id="aSb">${P(s.b)}</div>`;
+ return `<h5>${P(s.t)}</h5><p>${P(s.s)}</p><div class="sf">${s.f.map(f=>`<div><small>${P(f[0])}</small>${P(f[1])}</div>`).join("")}</div><div class="sbtn" id="aSb">${P(s.b)}</div>`;
 }
 function showAd(i){
- ac();ai=i;const a=ADS[i];
+ ac();ai=i;adStarted=true;const a=ADS[i];
  $("aTabs").querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-selected",j===i));
- $("aAv").src=a.av;$("aHandle").textContent=a.h;$("aMedia").innerHTML=media(a);$("aCtaT").textContent=a.cta;$("aLk").className="lk";$("aLk").innerHTML="&#9825;";
- $("aLikes").textContent=a.likes+" likes";$("aCap").innerHTML=`<b>${a.h}</b>${a.cap}`;
+ $("aAv").src=a.av;$("aHandle").textContent=a.h;$("aMedia").innerHTML=media(a);$("aCtaT").textContent=P(a.cta);$("aLk").className="lk";$("aLk").innerHTML="&#9825;";
+ $("aLikes").textContent=a.likes+tr(" likes"," लाइक्स");$("aCap").innerHTML=`<b>${a.h}</b>${P(a.cap)}`;
  $("aSheet").className="sheet";$("aShade").className="shade";$("aSheet").innerHTML=sheetHTML(a);const h=$("aHand");h.style.opacity=0;
- $("aInfo").innerHTML=`<div class="meta"><span class="f">${a.fmt}</span><span>&#128205; ${a.city}</span><span>Objective: ${a.obj}</span></div><h3>${a.b}</h3>
-  <dl style="margin-top:16px"><dt>Audience</dt><dd>${a.aud}</dd><dt>Budget</dt><dd>${a.bud}</dd><dt>Call to action</dt><dd>${a.cta}</dd></dl>
-  <div class="kpi4">${a.k.map(k=>`<div><b>${k[0]}</b><span>${k[1]}</span></div>`).join("")}</div>
-  <div class="flow3"><h6>Then the CRM takes over</h6><ol>${a.next.map(n=>`<li><i>${n[0]}</i>${n[1]}</li>`).join("")}</ol></div>`;
+ $("aInfo").innerHTML=`<div class="meta"><span class="f">${P(a.fmt)}</span><span>&#128205; ${P(a.city)}</span><span>${tr("Objective","उद्देश्य")}: ${P(a.obj)}</span></div><h3>${a.b}</h3>
+  <dl style="margin-top:16px"><dt>${tr("Audience","ऑडियंस")}</dt><dd>${P(a.aud)}</dd><dt>${tr("Budget","बजट")}</dt><dd>${P(a.bud)}</dd><dt>${tr("Call to action","बटन")}</dt><dd>${P(a.cta)}</dd></dl>
+  <div class="kpi4">${a.k.map(k=>`<div><b>${LANG==="hi"?k[0].replace("L"," लाख"):k[0]}</b><span>${P(k[1])}</span></div>`).join("")}</div>
+  <div class="flow3"><h6>${tr("Then the CRM takes over","फिर CRM संभाल लेता है")}</h6><ol>${a.next.map(n=>`<li><i>${n[0]}</i>${P(n[1])}</li>`).join("")}</ol></div>`;
  [...$("aInfo").querySelectorAll(".flow3 li")].forEach((l,j)=>aat(5200+j*450,()=>l.classList.add("in")));
- // media motion
  const sl=[...$("aMedia").querySelectorAll(".sl")];
  if(a.type==="car"){let k=0;const n=sl.length;const nx=()=>{k++;if(k>=n)return;sl.forEach((s,j)=>s.style.transform=`translateX(${(j-k)*100}%)`);$("aCnt").textContent=`${k+1}/${n}`;$("aMedia").querySelectorAll(".dotsx i").forEach((d,j)=>d.className=j===k?"on":"");};for(let j=1;j<Math.min(n,4);j++)aat(j*900,nx);}
  else if(sl.length>1){aat(1800,()=>{sl[0].style.opacity=0;sl[1].style.opacity=1;});}
  aat(1300,()=>{$("aMedia").querySelector(".heart").classList.add("go");$("aLk").className="lk on";$("aLk").innerHTML="&#9829;";});
- // tap CTA
  aat(3200,()=>{const s=$("scr").getBoundingClientRect(),c=$("aCta").getBoundingClientRect();h.style.left=(c.left-s.left+c.width*.7)+"px";h.style.top=(s.height-40)+"px";h.style.opacity=0;requestAnimationFrame(()=>{h.style.opacity=1;h.style.top=(c.top-s.top+6)+"px";});});
  aat(4100,()=>{$("aCta").classList.remove("go");void $("aCta").offsetWidth;$("aCta").classList.add("go");});
  aat(4500,()=>{h.style.opacity=0;$("aShade").className="shade on";$("aSheet").className="sheet up";
   const f=[...$("aSheet").querySelectorAll(".sf div")];f.forEach((d,j)=>aat(300+j*(a.sheet.wa?900:350),()=>d.classList.add("in")));
-  const sb=$("aSb");if(sb)aat(300+f.length*350+600,()=>{sb.classList.add("ok");sb.innerHTML=a.sheet.ok;});});
+  const sb=$("aSb");if(sb)aat(300+f.length*350+600,()=>{sb.classList.add("ok");sb.innerHTML=P(a.sheet.ok);});});
  aat(11500,()=>{if(aAuto&&aVis)showAd((ai+1)%ADS.length);else aT=[];});
 }
-if("IntersectionObserver" in window){let st=false;new IntersectionObserver(es=>es.forEach(e=>{aVis=e.isIntersecting;if(aVis&&!st){st=true;showAd(0);}else if(aVis&&aAuto&&!aT.length)showAd(ai);}),{threshold:.3}).observe($("scr"));}else{aVis=true;showAd(0);}
+if("IntersectionObserver" in window){new IntersectionObserver(es=>es.forEach(e=>{aVis=e.isIntersecting;if(aVis&&!adStarted)showAd(0);else if(aVis&&aAuto&&!aT.length)showAd(ai);}),{threshold:.3}).observe($("scr"));}else{aVis=true;showAd(0);}
+
+window._afterLang=()=>{if(adStarted)showAd(ai);if(demoStarted)run();};
+
 })();
 </script>
 </body>
